@@ -1,0 +1,10 @@
+Time stamp;Contador;RSSI_DL;PSR;Status LED NodeMCU; Status LED Esp
+Sat Dec  4 17:46:50 2021 ; 1 ;; 0.0 ;;
+Sat Dec  4 17:46:51 2021 ; 2 ;; 0.0 ;;
+Sat Dec  4 17:46:52 2021 ; 3 ;; 0.0 ;;
+Sat Dec  4 17:46:53 2021 ; 4 ;; 0.0 ;;
+Sat Dec  4 17:46:54 2021 ; 5 ;; 0.0 ;;
+Sat Dec  4 17:46:55 2021 ; 6 ;; 0.0 ;;
+Sat Dec  4 17:46:56 2021 ; 7 ;; 0.0 ;;
+Sat Dec  4 17:46:57 2021 ; 8 ;; 0.0 ;;
+Sat Dec  4 17:46:58 2021 ; 9 ;; 0.0 ;;

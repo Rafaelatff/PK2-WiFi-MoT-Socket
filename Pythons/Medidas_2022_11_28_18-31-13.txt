@@ -1,0 +1,1 @@
+Time stamp;Contador;RSSI_DL;PSR;Status LED NodeMCU; Status LED Esp
