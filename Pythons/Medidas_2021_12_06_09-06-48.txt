@@ -1,8 +1,0 @@
-Time stamp;Contador;RSSI_DL;PSR;Status LED NodeMCU; Status LED Esp
-Mon Dec  6 09:07:58 2021 ; 121 ;; 99.17 ;;
-Mon Dec  6 09:07:59 2021 ; 122 ;; 98.36 ;;
-Mon Dec  6 09:08:00 2021 ; 123 ;; 97.56 ;;
-Mon Dec  6 09:08:01 2021 ; 124 ;; 96.77 ;;
-Mon Dec  6 09:08:02 2021 ; 125 ;; 96.0 ;;
-Mon Dec  6 09:08:04 2021 ; 126 ;; 95.24 ;;
-Mon Dec  6 09:08:05 2021 ; 127 ;; 94.49 ;;
