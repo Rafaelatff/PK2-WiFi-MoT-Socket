@@ -59,9 +59,46 @@ Now that I have the fluxogram and the codes running, I will implement some stati
 
 The generated files stays at location "PK2-WiFi-MoT-Socket\Pythons" and are named "Medidas_YYYY_MM_DD_HH-mm-ss.txt" where: **YYYY** stands for the year, **MM** month, **DD** day, **HH** hour, **mm** minute and **ss** for the second of the recorded data (moment of creation of the file).
 
+To read the data, I had to ignorate the first row (```skiprows=1```) and also the last row (```.readlines()[:-1]```).
 
+```py
+RSSIdl = np.loadtxt(open("Medidas_2022_02_03_09-57-35.txt", mode='r').readlines()[:-1], skiprows=1, delimiter=';', usecols=[3])
+```
 
+Then I plot the data:
 
+```py
+plt.figure(1)
+plt.subplot(2,2,1) 
+plt.plot(RSSIdl) 
+plt.xlabel('Time domain') 
+plt.ylabel('RSSI') 
+plt.title('RSSI DL 2022 - 1322 RSSIs')
+
+plt.subplot(2,2,2)
+plt.hist(RSSIdl, bins=20)
+```
+
+And calculate the mean and the standard deviation:
+
+```py
+print('Mean: ' + str(np.float64(np.mean(RSSIdl)))) # It returns a <numpy.float64> type, then is converted to string
+print('Standard deviation: ' + str(np.float64(np.std(RSSIdl)))) # Same as before
+```
+
+I had as results, for two logs: 
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/96c65ccc-a7a7-45db-be5d-cf6c1a20eb9d)
+
+* Mean: 6.866598639455782
+* Standard deviation: 6.826359900338357
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/205444c5-e23a-452a-b117-7f7163496f3a)
+
+* Mean: 73.26285896454986
+* Standard deviation: 11.83503385862668
+
+None of them with a normal distribution. Lets try to collect more data and try again tomorrow! 
 
 ## Running statistics
 
