@@ -53,7 +53,21 @@ Serial didn't print the PK2 IP, then I checked on the router.
 
 ![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/668f50a6-f217-4958-8327-d55e1739415f)
 
+## Statistics over the data
 
+Now that I have the fluxogram and the codes running, I will implement some statiscs over the collected data. First of all, I will implement a new python, that can calculate the mean, the standard deviation and also plot a histogram. Some help for this process can be found [here](https://github.com/Rafaelatff/DataCamp-Intermediate-Python/tree/main).
+
+The generated files stays at location "PK2-WiFi-MoT-Socket\Pythons" and are named "Medidas_YYYY_MM_DD_HH-mm-ss.txt" where: **YYYY** stands for the year, **MM** month, **DD** day, **HH** hour, **mm** minute and **ss** for the second of the recorded data (moment of creation of the file).
+
+
+
+
+
+## Running statistics
+
+In previous studies, I prepared some code to run the running statistics over random generated data with normal distribution and then using the IZ data (studies for the [WissTek](http://www.wisstek.org) Lab). More information can be found [here](https://github.com/Rafaelatff/Running-statistics).
+
+[TBC] - Then I will apply some running statistics over the data.
   
 
 
