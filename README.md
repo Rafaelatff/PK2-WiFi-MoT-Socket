@@ -99,6 +99,12 @@ I had as results, for two logs:
 * Standard deviation: 11.83503385862668
 
 None of them with a normal distribution. Lets try to collect more data and try again tomorrow! 
+Now with 100000 of data: 
+
+![WhatsApp Image 2023-09-13 at 12 07 35](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/80931b84-2fa7-4d4f-b91d-c765ec2bbbce)
+
+* Mean: -52.034114434876535
+* Standard deviation: 2.757370986817883
 
 ## Running statistics
 
