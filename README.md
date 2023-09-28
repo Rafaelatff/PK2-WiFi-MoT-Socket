@@ -106,6 +106,43 @@ Now with 100000 of data:
 * Mean: -52.034114434876535
 * Standard deviation: 2.757370986817883
 
+I had some troubles by recovering the data, original file just save first tree rows (see next image). Previews data were copied from the terminal, pasted on a excel sheet, then I converted text to column, deleted all the non usable lines, then I copied again to a txt file. This took a lot of time! So, before going to the running statistics, I will study the python giles that generate de txt data with the measurements.
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/593d7e61-0773-46ee-bc98-17962f9c1a06)
+
+## N3_Python_RSSI_PSR.py
+
+### Socket configuration
+
+```py
+import socket # To use [socket.py](https://docs.python.org/3/library/socket.html) lib.
+# This module provides access to the BSD socket interface. It is available on all modern Unix systems, Windows, MacOS, and probably additional platforms.
+# It is a programming interface and API (Application Programming Interface) for network communication.
+
+udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # Creates a object named "udp" and configure it as IPv4 address family and UDP protocol.
+udp.settimeout(0.5) # Set 0.5 seconds as timeout
+```
+
+* ```socket.AF_INET``` - is a constant that indicates the address family that will be used. In this case, AF_INET refers to the IPv4 address family.
+* ```socket.SOCK_DGRAM``` - is a constant that indicates the type of socket that will be created. In this case, SOCK_DGRAM indicates that it will be a datagram type socket, used for communication based on the UDP protocol.
+* ```.settimeout()``` It is a method of the socket class (socket) which sets a timeout (in seconds) for socket I/O operations. This is useful to prevent the program from blocking indefinitely during a receive operation.
+* It must finish with a ```udp.close()```.
+
+```py
+HOST = input("Digite o endereco IP do sensor:")  # Now I have to type (on CLI/terminal), the IP that my router assigned to the PK2 board.
+PORT = input("Digite A porta do Socket:") # And then I type the socket door that PK2 is connected.
+HOST2 = ''  #endereço do Servidor socket
+
+Sensor = (HOST, int(PORT))   #conjunto endereço e porta utilizado para o envio da informação
+orig = (HOST2, int(PORT))     ##conjunto endereço e porta utilizado para o recebimento da informação
+
+```
+
+```py
+udp.bind(orig) #  Inicializa o socket de escuta
+```
+
+
 ## Running statistics
 
 In previous studies, I prepared some code to run the running statistics over random generated data with normal distribution and then using the IZ data (studies for the [WissTek](http://www.wisstek.org) Lab). More information can be found [here](https://github.com/Rafaelatff/Running-statistics).
