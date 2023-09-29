@@ -106,7 +106,7 @@ Now with 100000 of data:
 * Mean: -52.034114434876535
 * Standard deviation: 2.757370986817883
 
-I had some troubles by recovering the data, original file just save first tree rows (see next image). Previews data were copied from the terminal, pasted on a excel sheet, then I converted text to column, deleted all the non usable lines, then I copied again to a txt file. This took a lot of time! So, before going to the running statistics, I will study the python giles that generate de txt data with the measurements.
+I had some troubles by recovering the data, original file just save first tree rows (see next image). Previews data were copied from the terminal, pasted on a excel sheet, then I converted text to column, deleted all the non usable lines, then I copied again to a txt file. This took a lot of computer processing time! So, before going to the running statistics, I will study the python files that generate de txt data with the measurements. Later I realize that I have should use the 'gerencia.txt' file and not the 'Medidas_%Y_%m_%d_%H-%M-%S.txt' file.
 
 ![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/593d7e61-0773-46ee-bc98-17962f9c1a06)
 
@@ -128,20 +128,64 @@ udp.settimeout(0.5) # Set 0.5 seconds as timeout
 * ```.settimeout()``` It is a method of the socket class (socket) which sets a timeout (in seconds) for socket I/O operations. This is useful to prevent the program from blocking indefinitely during a receive operation.
 * It must finish with a ```udp.close()```.
 
+I tried to read the IP address by using the following code, but once we are using UDP connection, and bindind it to it, it wasn't that simple. So I won't use the next code. I have to pass the IP address and the port for the connection to PK2. But I will leave code here for learning.
+
+```py
+local_address = ('192.168.0.1', 8888)  # I pass the default gateway (IP do gateway padrão)
+udp.connect(local_address)
+
+udp.send(b'oi') # bytes-like object is required, not 'str'
+
+local_address = udp.getsockname()
+print("Endereço IP local:", local_address[0])
+print("Porta local:", udp.getsockname()[1]) # or I could use local_address[1]
+```
+
+Now, the code that works:
+
 ```py
 HOST = input("Digite o endereco IP do sensor:")  # Now I have to type (on CLI/terminal), the IP that my router assigned to the PK2 board.
-PORT = input("Digite A porta do Socket:") # And then I type the socket door that PK2 is connected.
-HOST2 = ''  #endereço do Servidor socket
+PORT = input("Digite A porta do Socket:") # And then I type the socket door that PK2 is connected, in our case 8888.
+HOST2 = ''  # Server address of the socket.
 
-Sensor = (HOST, int(PORT))   #conjunto endereço e porta utilizado para o envio da informação
-orig = (HOST2, int(PORT))     ##conjunto endereço e porta utilizado para o recebimento da informação
-
+Sensor = (HOST, int(PORT))   # Address and door port used to send the information.
+orig = (HOST2, int(PORT))    # Address and door port used to receive the information.
+udp.bind(orig) # Start socket on reading mode.
 ```
+Bad thing I aways had to check the IP address of the sensor. I should maybe set a static IP address! 
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/6a736d27-f39b-4766-8a75-6776797a5bfc)
+
+Let's not focus on the bytes of the packet right now. But the files. 
 
 ```py
-udp.bind(orig) #  Inicializa o socket de escuta
+import os # Importing os module 
+
+# Erase the measurements files
+if os.path.exists("gerencia.txt"):
+   os.remove("gerencia.txt")
+if os.path.exists("dados.txt"):
+   os.remove("dados.txt")
 ```
 
+Every time this part of the code runs, old 'gerencia.txt' and 'dados.txt' are erased. On 'gerencia.txt', it is copied the number of the packet, the RSSI data and the percentage of received packet. I still need to figure it out what the 'dados.txt' are for.
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/b95beb14-a326-490e-b482-e5bad74ef112)
+
+Then we create new files to record the new data ready to arrive.
+
+```py
+from time import localtime, strftime # 
+
+# Create new log files
+filename1 = strftime("Medidas_%Y_%m_%d_%H-%M-%S.txt")
+filename2 = "gerencia.txt"
+filename3 = "dados.txt"
+```
+
+* strftime("Medidas_%Y_%m_%d_%H-%M-%S.txt") %Y for year, %m for month, %d for day, %H for hour, %M for minute and %S for second.
+
+PAREI AQUI
 
 ## Running statistics
 
