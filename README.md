@@ -185,14 +185,74 @@ filename3 = "dados.txt"
 
 * strftime("Medidas_%Y_%m_%d_%H-%M-%S.txt") %Y for year, %m for month, %d for day, %H for hour, %M for minute and %S for second.
 
-PAREI AQUI
+Now for the other files, let's have a brief about some codes:
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/5d93b265-e71d-47a9-a460-28e49813f7a4)
+
+I create a file with the name inside variable 'filename1', being "teste.txt"
+Then I opened this file by using ```open(filename1, 'w')```, where 'w' stands for writting.
+
+The ['w'](https://docs.python.org/3/tutorial/inputoutput.html) on python documentation is explained next:
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/d63181ca-3e7e-4f2e-9e42-6b69ae6f520b)
+
+In the code there is also 'a+' but I couldn't find (only for [fopen()](http://www.manpagez.com/man/3/fopen/) function).
+
+I could use both ways:
+
+* arquivo.write("Message goes here")
+* print("Message goes here", file = arquivo)
+
+Then, when I finish, I have to close this file by ```arquivo.close()```.
+
+Issue #1: Code is finished by doing:
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/e37845ba-3ae3-472a-a203-4a9d632309ba)
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/791954f1-8fca-4a1c-add8-4ea264f43d79)
+
+Also empty file! Let's check line 231:
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/d7df32e7-99b8-4047-91f0-4230b12db486)
+
+Maybe some conflict with line 226. Tried to remove line 226 and error persisted. I returned line 226 and removed line 231. Erro was solved but still no log. Also tried to remove both lines and I had the same results. 
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/d37d569e-6bcf-4037-8d65-bfc9e8cb0cd4)
+
+Check the whole code and there is no code writting inside the file "Medidas_%Y_%m_%d_%H-%M-%S.txt", so I will delete (to make code cleaner) all the lines that makes reference to this file.
+Remember: I am on 'Learning' branch, so, original file will always be on the master branch (or in history, if later I decide to change it).
 
 ## Running statistics
 
-In previous studies, I prepared some code to run the running statistics over random generated data with normal distribution and then using the IZ data (studies for the [WissTek](http://www.wisstek.org) Lab). More information can be found [here](https://github.com/Rafaelatff/Running-statistics).
+Just checking my data: 
 
-[TBC] - Then I will apply some running statistics over the data.
-  
+```py
+RSSIdl = np.loadtxt("gerencia.txt", delimiter=';', usecols=[1])
+print(type(RSSIdl))
+print(RSSIdl)     
+
+plt.figure(1)
+plt.subplot(2,2,1) 
+plt.plot(RSSIdl) 
+plt.xlabel('Time domain') 
+plt.ylabel('RSSI') 
+plt.title('gerencia')
+
+plt.subplot(2,2,2)
+plt.hist(RSSIdl, bins=20)
+
+print('Mean: ' + str(np.float64(np.mean(RSSIdl)))) # It returns a <numpy.float64> type, then is converted to string
+print('Standard deviation: ' + str(np.float64(np.std(RSSIdl)))) # Same as before
+```
+As results:
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/49536a67-bc0e-46c1-9b8b-28d7bb5bfc58)
+
+![image](https://github.com/Rafaelatff/PK2-WiFi-MoT-Socket/assets/58916022/12498fd1-6f80-4e7a-82f7-b0fcc730bdcf)
+
+In previous studies, I prepared some code to run the running statistics over random generated data with normal distribution and then using the IZ data (studies for the [WissTek](http://www.wisstek.org) Lab). More information can be found [here](https://github.com/Rafaelatff/Running-statistics). Now I have to complement those studies by keeping a graphic that
+self-updates itself with the new data that arrives.
+
 
 
 
