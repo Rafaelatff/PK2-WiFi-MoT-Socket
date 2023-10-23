@@ -253,9 +253,9 @@ As results:
 In previous studies, I prepared some code to run the running statistics over random generated data with normal distribution and then using the IZ data (studies for the [WissTek](http://www.wisstek.org) Lab). More information can be found [here](https://github.com/Rafaelatff/Running-statistics). Now I have to complement those studies by keeping a graphic that
 self-updates itself with the new data that arrives.
 
-## N6_Python_Exibi_RSSI_PSR.py
+## N6_Python_Running_Statistcs.py
 
-I will use this python to suport me! And also some [DataCamp knowledge](https://www.datacamp.com/tutorial/gui-tkinter-python).
+By using this python ```N6_Python_Exibi_RSSI_PSR.py``` to suport me and also some [DataCamp knowledge](https://www.datacamp.com/tutorial/gui-tkinter-python), I created the ```N6_Python_Running_Statistcs.py```. More information can be found [here](https://github.com/Rafaelatff/tkinter-studies/tree/main).
 
 
 
