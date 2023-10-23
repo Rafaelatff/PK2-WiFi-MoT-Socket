@@ -9,8 +9,8 @@
 //#define password  "EDB332EC"        // Senha da Rede TP-LINK_B332EC
 
 // REDE INF505 - ESSA REDE É SÓ PARA TESTE E NÃO TEM SENHA
-#define ssid "INF505"           // Nome da Rede INF505
-#define password  ""        // Rede INF505 não tem senha
+#define ssid "Park dos Lagos"           // Nome da Rede INF505
+#define password  "bemvindo"        // Rede INF505 não tem senha
 // IP atribuido pelo AP INF505  192.168.0.2
 
 

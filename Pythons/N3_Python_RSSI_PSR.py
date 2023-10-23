@@ -20,6 +20,13 @@ orig = (HOST2, int(PORT))     ##conjunto endereço e porta utilizado para o rece
 
 udp.bind(orig) #  Inicializa o socket de escuta
 
+#local_address = ('192.168.1.1', 8888) # I pass the default gateway (IP do gateway padrão)
+#udp.connect(local_address)
+#udp.send(b'oi') # bytes-like object is required, not 'str'
+#local_address = udp.getsockname()
+#print("Endereço IP local:", local_address[0])
+#print("Porta local:", udp.getsockname()[1]) # or I could use local_address[1]
+
 #====================================TUNELAMENTO=================================
 # Camada de Aplicação
 byte34 = 0 # LED verde
@@ -40,18 +47,11 @@ if os.path.exists("gerencia.txt"):
    os.remove("gerencia.txt")
 if os.path.exists("dados.txt"):
    os.remove("dados.txt")
-# NOME ANTIGO
-#if os.path.exists("medidas.txt"):
-#   os.remove("medidas.txt")
    ################################################
 # Cria os arquivos de log
 filename1 = strftime("Medidas_%Y_%m_%d_%H-%M-%S.txt")
 filename2 = "gerencia.txt"
 filename3 = "dados.txt"
-
-#NOMES ANTIGOS
-#filename1 = strftime("Sensor_%Y_%m_%d_%H-%M-%S.txt")
-#filename2 = "medidas.txt"
 
 print ("Arquivo de log: %s" % filename1)
 Log_dados = open(filename1, 'w')
@@ -227,14 +227,17 @@ try:
          
    print ('Pacotes enviados = ',j,' Pacotes perdidos = ',perda_PK_RX)
    Log_dados.close()
-   Medidas.close()
+  # Medidas.close()
+  # Medidas_lumi.close()
+  # gerencia.close() # testing
+  # dados.close() # testing
    udp.close()
    print ('Fim da Execução')  # escreve na tela
 
 except KeyboardInterrupt:
    udp.close()
-   Log_dados.close()
-   Medidas.close()
+  # Log_dados.close()
+  # Medidas.close()
 
 
 ''' SIGNIFICADO DOS BYTES DO PACOTE DE DESCIDA
